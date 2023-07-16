@@ -52,7 +52,7 @@ class ClientAdmin(BaseUserAdmin):
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
         ("Personal info", {"fields": [
-            "first_name", "last_name", "sex"]}),
+            "first_name", "last_name", "sex", "avatar"]}),
         ("Permissions", {"fields": ["is_admin"]}),
     ]
     add_fieldsets = [

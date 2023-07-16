@@ -29,6 +29,7 @@ class Client(AbstractBaseUser, PermissionsMixin):
     avatar = models.ImageField(
         'Аватар',
         upload_to='clients/avatars/images/',
+        null=True,
     )
     is_active = models.BooleanField(default=True)
     is_admin = models.BooleanField(default=False)

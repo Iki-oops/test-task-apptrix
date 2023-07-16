@@ -77,6 +77,20 @@ django = ">=3.0"
 pytz = "*"
 
 [[package]]
+name = "drf-base64"
+version = "2.0"
+description = "DRF serializers to handle base64-encoded files"
+optional = false
+python-versions = "*"
+files = [
+    {file = "drf_base64-2.0.tar.gz", hash = "sha256:dee42f27e6ea5fb91ff85916ad1aaba222275552815430ff6a55a547e0246234"},
+]
+
+[package.dependencies]
+Django = ">=2.0"
+djangorestframework = "<4.0.0"
+
+[[package]]
 name = "markdown"
 version = "3.4.3"
 description = "Python implementation of John Gruber's Markdown."
@@ -211,4 +225,4 @@ files = [
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.10"
-content-hash = "902525e3612d65c2d32ca3b737757282320111f0471ab3a7dbfd2359ae4054f8"
+content-hash = "0b863c7c5d4c4dbd1b39eaa427f100e9c4fed431faaef795a6feb7dcadc49a3f"
