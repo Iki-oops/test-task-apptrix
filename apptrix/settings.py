@@ -124,7 +124,6 @@ USE_TZ = True
 # Custom User
 
 AUTH_USER_MODEL = 'clients.Client'
-AUTHENTICATION_BACKENDS = ('clients.backends.AuthBackend',)
 
 
 # Static files (CSS, JavaScript, Images)

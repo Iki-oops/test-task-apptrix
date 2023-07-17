@@ -6,7 +6,7 @@ from .models import Client
 
 class ClientPostSerializer(serializers.ModelSerializer):
     avatar = Base64ImageField()
-    confirm_password = serializers.CharField()
+    confirm_password = serializers.CharField(write_only=True)
 
     class Meta:
         model = Client
@@ -24,7 +24,6 @@ class ClientPostSerializer(serializers.ModelSerializer):
             'last_name': {'required': True},
             'sex': {'required': True},
             'password': {'write_only': True},
-            'confirm_password': {'write_only': True},
         }
 
     def validate(self, data):
