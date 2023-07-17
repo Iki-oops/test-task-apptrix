@@ -124,6 +124,8 @@ USE_TZ = True
 # Custom User
 
 AUTH_USER_MODEL = 'clients.Client'
+AUTHENTICATION_BACKENDS = ('clients.backends.AuthBackend',)
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.2/howto/static-files/

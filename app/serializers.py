@@ -45,6 +45,18 @@ class ClientPostSerializer(serializers.ModelSerializer):
         return client
 
 
+class ClientLoginSerializer(serializers.ModelSerializer):
+    email = serializers.EmailField(validators=[])
+
+    class Meta:
+        model = Client
+        fields = ('email', 'password')
+        extra_kwargs = {
+            'email': {'required': True},
+            'password': {'required': True}
+        }
+
+
 class ClientSerializer(serializers.ModelSerializer):
     avatar = serializers.SerializerMethodField()
 
