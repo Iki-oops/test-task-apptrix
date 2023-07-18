@@ -1,10 +1,10 @@
 [tool.poetry]
-name = "test-task-apptrix"
+name = "apptrix"
 version = "0.1.0"
 description = ""
 authors = ["Дима Бамбагаев <bambagaevdmitrij@gmail.com>"]
 readme = "README.md"
-packages = [{include = "test_task_apptrix"}]
+packages = [{include = "apptrix"}]
 
 [tool.poetry.dependencies]
 python = "^3.10"
