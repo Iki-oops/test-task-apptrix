@@ -14,7 +14,7 @@ from .filters import ClientFilter
 from .mixins import ClientMixin
 from .models import Client, Match
 from .permissions import AnonUserPermission
-from .serializers import ClientSerializer, ClientPostSerializer, ClientLoginSerializer, MatchSerializer
+from .serializers import ClientSerializer, ClientPostSerializer, ClientLoginSerializer
 from .utils import add_watermark, send_mail_to_clients
 
 

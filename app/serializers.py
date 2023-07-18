@@ -16,6 +16,8 @@ class ClientPostSerializer(serializers.ModelSerializer):
             'last_name',
             'sex',
             'avatar',
+            'longitude',
+            'latitude',
             'password',
             'confirm_password',
         )
@@ -23,6 +25,8 @@ class ClientPostSerializer(serializers.ModelSerializer):
             'first_name': {'required': True},
             'last_name': {'required': True},
             'sex': {'required': True},
+            'longitude': {'required': False},
+            'latitude': {'required': False},
             'password': {'write_only': True},
         }
 
@@ -38,6 +42,8 @@ class ClientPostSerializer(serializers.ModelSerializer):
             last_name=validated_data.pop('last_name'),
             sex=validated_data.pop('sex'),
             avatar=validated_data.pop('avatar'),
+            longitude=validated_data.pop('longitude'),
+            latitude=validated_data.pop('latitude'),
         )
         client.set_password(validated_data.pop('password'))
         client.save()
@@ -72,10 +78,3 @@ class ClientSerializer(serializers.ModelSerializer):
 
     def get_avatar(self, obj):
         return '/media/' + obj.avatar.name
-
-
-class MatchSerializer(serializers.ModelSerializer):
-
-    class Meta:
-        model = Match
-        fields = ('initiator', 'confirmer', 'is_accepted', 'is_declined')
