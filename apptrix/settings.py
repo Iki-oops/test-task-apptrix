@@ -13,6 +13,8 @@ import os
 from datetime import timedelta
 from pathlib import Path
 from environs import Env
+import django_heroku
+import dj_database_url
 
 # .env
 env = Env()
@@ -31,7 +33,7 @@ SECRET_KEY = 'django-insecure-9ue)a_(bwx75&8kn7m4h4hg#t1n9+xm_r&$=+795elo!h4r2sd
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -159,14 +161,17 @@ EMAIL_USE_SSL = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+STATIC_ROOT = Path(BASE_DIR, 'static')
+django_heroku.settings(locals())
 
 # Media files
 
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+MEDIA_ROOT = Path(BASE_DIR, 'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
