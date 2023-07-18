@@ -1,5 +1,7 @@
 from PIL import Image
 from django.conf import settings
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
 
 
 def add_watermark(img_name,
@@ -26,16 +28,24 @@ def add_watermark(img_name,
             new_data.append(item)
     watermark_img.putdata(new_data)
 
-    # transparent = Image.new('RGBA', base_img.size, (0, 0, 0, 0))
     watermark_position = (
         base_img.size[0] - watermark_img.size[0],
         base_img.size[1] - watermark_img.size[1]
     )
     base_img.paste(watermark_img, watermark_position, mask=watermark_img)
 
-    # transparent.paste(base_img, (0, 0))
-    # transparent.paste(watermark_img, watermark_position, mask=watermark_img)
-    # watermarked_img_path = upload_to + ''.join(img_name.split('.')[:-1]) + '.png'
-    # transparent.save(watermarked_img_path)
     base_img.save(base_path)
-    # return watermarked_img_path
+
+
+def send_mail_to_clients(clients: list[dict]):
+    for client in clients:
+        html_body = render_to_string(
+            'email_templates/match_email.html',
+            client,
+        )
+        msg = EmailMultiAlternatives(
+            subject=f'Сайт знакомств',
+            to=[client.get('email_to')]
+        )
+        msg.attach_alternative(html_body, 'text/html')
+        msg.send()

@@ -1,7 +1,7 @@
 from rest_framework import serializers
 from drf_base64.fields import Base64ImageField
 
-from .models import Client
+from .models import Client, Match
 
 
 class ClientPostSerializer(serializers.ModelSerializer):
@@ -72,3 +72,10 @@ class ClientSerializer(serializers.ModelSerializer):
 
     def get_avatar(self, obj):
         return '/media/' + obj.avatar.name
+
+
+class MatchSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Match
+        fields = ('initiator', 'confirmer', 'is_accepted', 'is_declined')
