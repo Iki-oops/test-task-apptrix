@@ -16,7 +16,15 @@ class ClientCreationForm(forms.ModelForm):
 
     class Meta:
         model = Client
-        fields = ["email", "first_name", "last_name", "sex", "avatar"]
+        fields = [
+            "email",
+            "first_name",
+            "last_name",
+            "sex",
+            "avatar",
+            "longitude",
+            "latitude",
+        ]
 
     def clean_password2(self):
         password1 = self.cleaned_data.get("password1")
@@ -39,7 +47,14 @@ class ClientChangeForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = [
-            "email", "first_name", "last_name", "sex", "avatar", "password",
+            "email",
+            "first_name",
+            "last_name",
+            "sex",
+            "avatar",
+            "password",
+            "longitude",
+            "latitude",
         ]
 
 
@@ -52,7 +67,7 @@ class ClientAdmin(BaseUserAdmin):
     fieldsets = [
         (None, {"fields": ["email", "password"]}),
         ("Personal info", {"fields": [
-            "first_name", "last_name", "sex", "avatar"]}),
+            "first_name", "last_name", "sex", "avatar", "longitude", "latitude"]}),
         ("Permissions", {"fields": ["is_admin"]}),
     ]
     add_fieldsets = [
@@ -61,7 +76,15 @@ class ClientAdmin(BaseUserAdmin):
             {
                 "classes": ["wide"],
                 "fields": [
-                    "email", "first_name", "last_name", "sex", "avatar", "password1", "password2",
+                    "email",
+                    "first_name",
+                    "last_name",
+                    "sex",
+                    "avatar",
+                    "password1",
+                    "password2",
+                    "longitude",
+                    "latitude",
                 ],
             },
         ),

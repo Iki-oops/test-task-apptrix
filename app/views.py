@@ -20,12 +20,7 @@ from .utils import add_watermark, send_mail_to_clients
 
 class ClientViewSet(ClientMixin):
     queryset = Client.objects.all()
-
-    # serializer_class = ClientSerializer
-    # def get_serializer_class(self):
-    #     if self.action == 'match':
-    #         return MatchSerializer
-    #     return ClientSerializer
+    serializer_class = ClientSerializer
 
     @action(methods=['POST'],
             detail=True,
@@ -45,6 +40,7 @@ class ClientViewSet(ClientMixin):
                 Q(initiator=initiator, confirmer=confirmer) |
                 Q(initiator=confirmer, confirmer=initiator)
             )
+
             if match.is_accepted or match.is_declined:
                 return Response(
                     {'detail': 'Вы уже отвечали на этот мэтч'},
