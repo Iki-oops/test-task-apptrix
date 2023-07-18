@@ -1,1 +1,1 @@
-web gunicorn apptrix.wsgi:application --log-file -
+web: gunicorn apptrix.wsgi --log-file -
