@@ -8,8 +8,8 @@ from django.template.loader import render_to_string
 
 def add_watermark(img_name,
                   base_path=None,
-                  watermark_path=Path(settings.STATIC_ROOT, 'watermarks/python-logo.png'),
-                  upload_to=Path(settings.MEDIA_ROOT, 'clients/avatars/images/')):
+                  watermark_path=Path(settings.BASE_DIR, 'static/watermarks/python-logo.png'),
+                  upload_to=Path(settings.BASE_DIR, 'media/clients/avatars/static/')):
     if not base_path:
         base_path = Path(upload_to, img_name)
 

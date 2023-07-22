@@ -28,7 +28,7 @@ class Client(AbstractBaseUser, PermissionsMixin):
     )
     avatar = models.ImageField(
         'Аватар',
-        upload_to='clients/avatars/images/',
+        upload_to='clients/avatars/static/',
         null=True,
     )
     longitude = models.DecimalField(
